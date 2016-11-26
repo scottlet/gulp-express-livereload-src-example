@@ -7,9 +7,9 @@ Place this repo inside that checkout as ```src```
 You should have a directory structure that looks something like:
 
 ```
-- bin
 - gulp-tasks
 - src
+  ├ bin
   ├ fonts
   ├ images
   ├ js
@@ -21,7 +21,6 @@ You should have a directory structure that looks something like:
 .gitignore
 .scss-lint.yml
 README.md
-app.js
 gulpfile.js
 package.json
 ```

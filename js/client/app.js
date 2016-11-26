@@ -1,3 +1,4 @@
-/*eslint-disable no-console*/
-'use strict';
-require('../shared/dummy').printLn();
+//import dummy from '../shared/dummy';
+var dummy = require('../shared/dummy');
+dummy.printLn();
+//console.log('fhoo');
