@@ -1,7 +1,6 @@
 {
     "env": {
-        "node": true,
-        "es6": true
+        "browser": true
     },
     "globals": {
         "$": false
@@ -65,7 +64,7 @@
             2,
             {
                 "ignoreArrayIndexes": true,
-                "ignore": [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                "ignore": [-1, .1, .2, .3, .4, .5, .6, .7, .8, .9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100, 255, 256, 500, 512, 1000]
             }
         ],
         "no-multi-spaces": 2,
@@ -86,7 +85,8 @@
         ],
         "padding-line-between-statements": [
             2,
-            { "blankLine": "always", "prev": "block-like", "next": "*" }
+            { "blankLine": "always", "prev": "block-like", "next": "*" },
+            { "blankLine": "always", "prev": "*", "next": "block-like" }
         ],
         "quotes": [
             2,

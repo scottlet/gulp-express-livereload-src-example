@@ -1,36 +1,48 @@
-const express = require('express');
-const path = require('path');
-const favicon = require('serve-favicon');
-const exphbs  = require('express-handlebars');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
+'use strict';
 
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const express = require('express');
+const expressHandlebars = require('express-handlebars');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const {NAME, VERSION} = require('./options');
+const path = require('path');
 const routesController = require('./routes/routesController');
 const users = require('./routes/users');
+const HTTPCODES = {
+    E500: 500
+};
 
 let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, '/views'));
-app.engine('.hbs', exphbs({
+app.engine('.hbs', expressHandlebars({
     extname: '.hbs',
     defaultLayout: 'default',
-    layoutsDir: path.join(__dirname, '/views/layouts')
+    layoutsDir: path.join(__dirname, '/views/layouts'),
+    helpers: {
+        name: NAME,
+        version: VERSION
+    }
 }));
+
+//console.log('name', NAME, 'version', VERSION);
 app.set('view engine', '.hbs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//console.log('hello');
 
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(favicon('app/public/images/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, '/public')));
-    // Disable template caching in browser for dev.
+// Disable template caching in browser for dev.
 if (app.get('env') !== 'production') {
     app.use((req, res, next) => {
         if (req.accepts('html')) {
@@ -38,15 +50,18 @@ if (app.get('env') !== 'production') {
             res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
             res.setHeader('Expires', '0');
         }
+
         return next();
     });
 }
+
 app.use('/', routesController);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-    var err = new Error('Not Found');
+    let err = new Error('Not Found');
+
     err.status = 404;
     next(err);
 });
@@ -57,7 +72,7 @@ app.use((req, res, next) => {
 // will print stacktrace
 if (app.get('env') !== 'production') {
     app.use((err, req, res, next) => {
-        res.status(err.status || 500);
+        res.status(err.status || HTTPCODES.E500);
         res.render('error', {
             message: err.message,
             error: err
@@ -68,7 +83,7 @@ if (app.get('env') !== 'production') {
 // production error handler
 // no stacktraces leaked to user
 app.use((err, req, res, next) => {
-    res.status(err.status || 500);
+    res.status(err.status || HTTPCODES.E500);
     res.render('error', {
         message: err.message,
         error: {}

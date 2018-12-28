@@ -1,5 +1,6 @@
 body {
     background: $bg;
+    color: $fg;
     font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
     padding: 50px;
 }
@@ -15,4 +16,8 @@ h1 {
 
 img {
     height: 100px;
+
+    &.w {
+        background-color: $fg;
+    }
 }

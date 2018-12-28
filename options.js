@@ -1,15 +1,18 @@
-/** When the app runs, it looks for env variable "APP_NAME"
- *  this can be set as APP_NAME=foo.js node bin/www when
- *  running without gulp.
- *
- */
+'use strict';
 
-/**
- * Options override for defaults in CONSTS.js in gulp
- * @type {Object}
- */
+const {name, version} = require('./package.json');
 
-module.exports = {
-    NODEMON_DELAY: 1400,
-    APP_NAME: 'example.js'
+const OPTIONS = {
+    NAME: name,
+    FULL_NAME: 'Gulp Express Handlebars Src Example',
+    VERSION: version,
+    BREAKPOINTS: {
+        OLD_MOBILE: 320,
+        MOBILE: 767,
+        SMALL_TABLET: 600,
+        TABLET: 979,
+        SMALL_DESKTOP: 1440
+    }
 };
+
+module.exports = OPTIONS;

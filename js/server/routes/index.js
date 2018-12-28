@@ -1,6 +1,10 @@
+'use strict';
+
 const dummy = require('../shared/dummy');
+
 module.exports = function index(req, res, next) {
     dummy.printLn();
+
     let params = {
         title: 'The Test Page',
         pageTitle: 'Welcome!',
@@ -11,5 +15,6 @@ module.exports = function index(req, res, next) {
             }
         }
     };
+
     res.render('index', params);
 };
