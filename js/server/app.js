@@ -14,14 +14,13 @@ const HTTPCODES = {
     E500: 500
 };
 
-let app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, '/views'));
 app.engine('.hbs', expressHandlebars({
     extname: '.hbs',
-    defaultLayout: 'default',
-    layoutsDir: path.join(__dirname, '/views/layouts'),
+    partialsDir: path.join(__dirname, '/views/partials'),
     helpers: {
         name: NAME,
         version: VERSION
@@ -60,7 +59,7 @@ app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-    let err = new Error('Not Found');
+    const err = new Error('Not Found');
 
     err.status = 404;
     next(err);
