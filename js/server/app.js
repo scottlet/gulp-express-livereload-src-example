@@ -21,6 +21,7 @@ app.set('views', path.join(__dirname, '/views'));
 app.engine('.hbs', expressHandlebars({
     extname: '.hbs',
     partialsDir: path.join(__dirname, '/views/partials'),
+    defaultLayout: false,
     helpers: {
         name: NAME,
         version: VERSION
