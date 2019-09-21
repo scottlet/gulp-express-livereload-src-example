@@ -1,12 +1,10 @@
-'use strict';
-
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express = require('express');
 const expressHandlebars = require('express-handlebars');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
-const {NAME, VERSION} = require('./options');
+const { NAME, VERSION } = require('./options');
 const path = require('path');
 const routesController = require('./routes/routesController');
 const users = require('./routes/users');
@@ -35,7 +33,7 @@ app.set('view engine', '.hbs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 //console.log('hello');
 
-app.use(favicon('app/public/images/favicon.ico'));
+app.use(favicon(path.join(__dirname, '/public/images/favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -1,5 +1,3 @@
-'use strict';
-
 const dummy = require('../shared/dummy');
 
 module.exports = function index(req, res, next) {
@@ -10,7 +8,7 @@ module.exports = function index(req, res, next) {
         pageTitle: 'Welcome!',
         testableProperty: true,
         helpers: {
-            capitalise: (text) => {
+            capitalise: text => {
                 return text.toUpperCase();
             }
         }

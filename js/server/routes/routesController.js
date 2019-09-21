@@ -1,5 +1,3 @@
-'use strict';
-
 const express = require('express');
 const index = require('./index');
 const users = require('./users');

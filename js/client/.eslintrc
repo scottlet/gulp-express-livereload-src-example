@@ -1,13 +1,22 @@
 {
     "env": {
-        "browser": true
+        "browser": true,
+        "es6": true
     },
     "globals": {
         "$": false
     },
     "plugins": [
+        "jsdoc",
+        "import"
     ],
+    "settings": {
+        "import/resolver": "node"
+    },
     "extends": "eslint:recommended",
+    "parserOptions": {
+        "sourceType": "module"
+    },
     "rules": {
         "array-bracket-spacing": 1,
         "block-scoped-var": 2,

@@ -1,3 +1,3 @@
-'use strict';
+import { printLn } from '../shared/dummy';
 
-require('../shared/dummy').printLn();
+printLn();

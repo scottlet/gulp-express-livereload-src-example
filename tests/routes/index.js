@@ -1,21 +1,17 @@
-'use strict';
-
 /*global describe, it */
-var sinon = require('sinon');
-var chai = require('chai');
-var expect = chai.expect;
+const sinon = require('sinon');
+const chai = require('chai');
+const expect = chai.expect;
 
-var index = require('../../../app/routes/index');
+const index = require('../../../app/routes/index');
 
 describe('Routes', () => {
     describe('GET Index', () => {
         it('should respond', () => {
-            var req;
-            var res;
-            var spy;
+            const req = {};
+            const res = {};
+            const spy = sinon.spy();
 
-            req = res = {};
-            spy = sinon.spy();
             res.render = (path, opts) => {
                 spy();
                 expect(opts.testableProperty).to.equal(true);
