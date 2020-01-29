@@ -1,6 +1,6 @@
 {
   "name": "Example-gulp-express-handlebars-src",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "browserslist": ["> 2%", "last 1 version", "IE 11", "not dead"]
 }
