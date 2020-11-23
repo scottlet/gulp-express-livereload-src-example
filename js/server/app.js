@@ -16,15 +16,18 @@ const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, '/views'));
-app.engine('.hbs', expressHandlebars({
-    extname: '.hbs',
-    partialsDir: path.join(__dirname, '/views/partials'),
-    defaultLayout: false,
-    helpers: {
-        name: NAME,
-        version: VERSION
-    }
-}));
+app.engine(
+    '.hbs',
+    expressHandlebars({
+        extname: '.hbs',
+        partialsDir: path.join(__dirname, '/views/partials'),
+        defaultLayout: false,
+        helpers: {
+            name: NAME,
+            version: VERSION
+        }
+    })
+);
 
 //console.log('name', NAME, 'version', VERSION);
 app.set('view engine', '.hbs');
@@ -44,7 +47,10 @@ if (app.get('env') !== 'production') {
     app.use((req, res, next) => {
         if (req.accepts('html')) {
             res.setHeader('Pragma', 'no-cache');
-            res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+            res.setHeader(
+                'Cache-Control',
+                'no-cache, no-store, must-revalidate'
+            );
             res.setHeader('Expires', '0');
         }
 
@@ -68,7 +74,7 @@ app.use((req, res, next) => {
 // development error handler
 // will print stacktrace
 if (app.get('env') !== 'production') {
-    app.use((err, req, res, next) => {
+    app.use((err, req, res) => {
         res.status(err.status || HTTPCODES.E500);
         res.render('error', {
             message: err.message,
@@ -79,13 +85,12 @@ if (app.get('env') !== 'production') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     res.status(err.status || HTTPCODES.E500);
     res.render('error', {
         message: err.message,
         error: {}
     });
 });
-
 
 module.exports = app;
