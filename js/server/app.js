@@ -1,13 +1,13 @@
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const express = require('express');
-const expressHandlebars = require('express-handlebars');
-const favicon = require('serve-favicon');
-const logger = require('morgan');
-const { NAME, VERSION } = require('./options');
-const path = require('path');
-const routesController = require('./routes/routesController');
-const users = require('./routes/users');
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import express from 'express';
+import expressHandlebars from 'express-handlebars';
+import favicon from 'serve-favicon';
+import logger from 'morgan';
+import { NAME, VERSION } from './options';
+import path from 'path';
+import routesController from './routes/routesController';
+import users from './routes/users';
 const HTTPCODES = {
     E500: 500
 };
@@ -35,7 +35,7 @@ app.set('view engine', '.hbs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-app.use(favicon(path.join(__dirname, '/public/images/favicon.ico')));
+app.use(favicon(path.join(__dirname, '/public/' + VERSION + '/images/favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -93,4 +93,4 @@ app.use((err, req, res) => {
     });
 });
 
-module.exports = app;
+export { app };

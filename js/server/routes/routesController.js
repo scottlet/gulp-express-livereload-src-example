@@ -1,9 +1,9 @@
-const express = require('express');
-const index = require('./index');
-const users = require('./users');
+import express from 'express';
+import index from './index';
+import users from './users';
 const router = express.Router();
 
 router.get('/', index);
 router.get('/users', users);
 
-module.exports = router;
+export default router;
