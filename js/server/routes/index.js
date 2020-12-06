@@ -1,7 +1,7 @@
-const dummy = require('../shared/dummy');
+import { printLn } from '../shared/dummy';
 
-module.exports = function index(req, res, next) {
-    dummy.printLn();
+function index(req, res, next) {
+    printLn();
 
     const params = {
         title: 'The Test Page',
@@ -15,4 +15,6 @@ module.exports = function index(req, res, next) {
     };
 
     res.render('index', params);
-};
+}
+
+export default index;
