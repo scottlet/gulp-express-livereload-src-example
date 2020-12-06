@@ -1,9 +1,7 @@
 /*global describe, it */
-const sinon = require('sinon');
-const chai = require('chai');
-const expect = chai.expect;
-
-const index = require('../../../app/routes/index');
+import sinon from 'sinon';
+import { expect } from 'chai';
+import index from '../../../app/routes/index';
 
 describe('Routes', () => {
     describe('GET Index', () => {
