@@ -1,10 +1,10 @@
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import express from 'express';
-import expressHandlebars from 'express-handlebars';
+import { engine } from 'express-handlebars';
 import favicon from 'serve-favicon';
 import logger from 'morgan';
-import { NAME, VERSION } from './options';
+import { name as appname, version as appversion } from './package.json';
 import path from 'path';
 import routesController from './routes/routesController';
 import users from './routes/users';
@@ -18,13 +18,13 @@ const app = express();
 app.set('views', path.join(__dirname, '/views'));
 app.engine(
     '.hbs',
-    expressHandlebars({
+    engine({
         extname: '.hbs',
         partialsDir: path.join(__dirname, '/views/partials'),
         defaultLayout: false,
         helpers: {
-            name: NAME,
-            version: VERSION
+            name: appname,
+            version: appversion
         }
     })
 );
@@ -35,7 +35,7 @@ app.set('view engine', '.hbs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-app.use(favicon(path.join(__dirname, '/public/' + VERSION + '/images/favicon.ico')));
+app.use(favicon(path.join(__dirname, '/public/' + appversion + '/images/favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
