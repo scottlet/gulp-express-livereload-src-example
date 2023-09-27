@@ -4,6 +4,7 @@ import express from 'express';
 import { engine } from 'express-handlebars';
 import favicon from 'serve-favicon';
 import logger from 'morgan';
+// eslint-disable-next-line import/no-unresolved
 import { name as appname, version as appversion } from './package.json';
 import path from 'path';
 import routesController from './routes/routesController';
@@ -14,18 +15,21 @@ const HTTPCODES = {
 
 const app = express();
 
+app.locals = {
+    version: appversion,
+    name: appname
+};
+
 // view engine setup
 app.set('views', path.join(__dirname, '/views'));
 app.engine(
     '.hbs',
     engine({
         extname: '.hbs',
-        partialsDir: path.join(__dirname, '/views/partials'),
-        defaultLayout: false,
-        helpers: {
-            name: appname,
-            version: appversion
-        }
+        defaultLayout: 'default',
+        layoutsDir: path.join(__dirname, '/views/layouts'),
+        partialsDir: path.join(__dirname, '/views/partials')
+
     })
 );
 
