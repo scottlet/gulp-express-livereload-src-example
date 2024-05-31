@@ -1,6 +1,6 @@
 ###Src files for gulp-express-livereload
 
-Check out https://github.com/scottbert/gulp-express-livereload
+Check out https://github.com/scottlet/gulp-express-livereload
 
 Place this repo inside that checkout as ```src```
 
