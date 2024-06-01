@@ -1,6 +1,8 @@
 /*eslint-disable no-console*/
-function printLn() {
-    console.log('this file is shared between server and client.');
+/**
+ * printLn
+ * @returns {void}
+ */
+export function printLn() {
+  console.log('this file is shared between server and client.');
 }
-
-export { printLn };

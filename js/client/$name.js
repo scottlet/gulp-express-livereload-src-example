@@ -1,3 +1,3 @@
-import { printLn } from '../shared/dummy';
+import { printLn } from '~/shared/dummy';
 
 printLn();

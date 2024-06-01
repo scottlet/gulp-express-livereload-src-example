@@ -1,6 +1,18 @@
 {
-  "name": "Example-gulp-express-handlebars-src",
-  "version": "1.3.0",
+  "name": "example-gulp-express-livereload-src",
+  "version": "2.0.0",
   "private": true,
-  "browserslist": ["> 2%", "last 1 version", "IE 11", "not dead"]
+  "browserslist": [
+    "> 2%",
+    "last 1 version",
+    "IE 11",
+    "not dead"
+  ],
+  "_moduleAliases": {
+    "@root": ".",
+    "~/": "./"
+  },
+  "devDependencies": {
+    "eslint-plugin-prefer-smart-quotes": "^2.0.0"
+  }
 }
