@@ -1,7 +1,12 @@
 {
   "name": "example-gulp-express-livereload-src",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": true,
+  "scripts": {
+    "lint": "eslint './**/*.{js,jsx}'",
+    "lint:type-check": "tsc --project jsconfig.json --noEmit  --maxNodeModuleJsDepth 0",
+    "validate": "npm run lint && npm run lint:type-check"
+  },
   "browserslist": [
     "> 2%",
     "last 1 version",
@@ -13,6 +18,7 @@
     "~/": "./"
   },
   "devDependencies": {
+    "eslint": "^8.57.0",
     "eslint-plugin-prefer-smart-quotes": "^2.0.0"
   }
 }
