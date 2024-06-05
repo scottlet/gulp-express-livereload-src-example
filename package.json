@@ -20,7 +20,9 @@
     "lint": "eslint './**/*.{js,jsx}'",
     "lint:scss": "stylelint '**/*.scss'",
     "lint:type-check": "tsc --project jsconfig.json --noEmit  --maxNodeModuleJsDepth 0",
-    "validate": "npm run lint && npm run lint:type-check && npm run lint:scss"
+    "validate": "npm run lint && npm run lint:type-check && npm run lint:scss",
+    "test": "gulp mochaTestSrc",
+    "test:watch": "gulp testWatcher"
   },
   "browserslist": [
     "> 2%",

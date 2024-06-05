@@ -1,9 +1,8 @@
+import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import express from 'express';
 import { engine } from 'express-handlebars';
 import favicon from 'serve-favicon';
-import logger from 'morgan';
 import { HttpError } from 'http-errors';
 
 // @ts-ignore
@@ -51,7 +50,7 @@ app.set('view engine', '.hbs');
 app.use(
   favicon(path.join(__dirname, '/public/' + appversion + '/images/favicon.ico'))
 );
-app.use(logger('dev'));
+app.use(require('morgan')('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
