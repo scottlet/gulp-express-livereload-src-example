@@ -1,11 +1,26 @@
 {
-  "name": "example-gulp-express-livereload-src",
-  "version": "2.0.2",
-  "private": true,
+  "name": "gulp-express-livereload-src-example",
+  "version": "2.1.0",
+  "private": false,
+  "author": {
+    "name": "Scott van Looy",
+    "email": "scott@quul.net"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scottlet/gulp-express-livereload-src-example.git"
+  },
+  "bugs": "https://github.com/scottlet/gulp-express-livereload/issues",
+  "description": "This is a small project that should make using gulp and LiveReload much easier for people",
+  "license": "(ISC OR GPL-3.0)",
+  "contributors": [
+    "Scott van Looy"
+  ],
   "scripts": {
     "lint": "eslint './**/*.{js,jsx}'",
+    "lint:scss": "stylelint '**/*.scss'",
     "lint:type-check": "tsc --project jsconfig.json --noEmit  --maxNodeModuleJsDepth 0",
-    "validate": "npm run lint && npm run lint:type-check"
+    "validate": "npm run lint && npm run lint:type-check && npm run lint:scss"
   },
   "browserslist": [
     "> 2%",

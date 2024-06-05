@@ -1,7 +1,6 @@
-/*global describe, it */
 import { spy } from 'sinon';
 import { expect } from 'chai';
-import index from '../../../app/routes/index';
+import index from '.';
 
 describe('Routes', () => {
   describe('GET Index', () => {
@@ -13,6 +12,7 @@ describe('Routes', () => {
       }
     };
     const ourSpy = spy(res, 'render');
+
     beforeEach(() => {
       ourSpy.resetHistory();
       // @ts-ignore
